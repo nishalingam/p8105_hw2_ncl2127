@@ -1,0 +1,33 @@
+---
+title: "p8105_hw2_ncl2127"
+author: "Nisha Lingam"
+date: "2023-10-01"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+```{r mr_trash_wheel creation and row filter}
+mr_trash_wheel = read_excel("./data/202207 Trash Wheel Collection Data.xlsx", sheet = 1, cell_rows(c(2:549)))|> janitor::clean_names()
+
+mr_trash_wheel
+```
+
+```{r mr_trash_wheel homes powered creation}
+homes_powered_df = 
+  tibble(
+    dumpster_num = 1:547
+    homes_powered = select(mr_trash_wheel
+  ))
+```
+
+```{r}
+##need to be aware of arguments into a function that predates tidyverse
+```
