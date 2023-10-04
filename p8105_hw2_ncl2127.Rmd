@@ -14,18 +14,32 @@ library(tidyverse)
 library(readxl)
 ```
 
-```{r mr_trash_wheel creation and row filter}
-mr_trash_wheel = read_excel("./data/202207 Trash Wheel Collection Data.xlsx", sheet = 1, cell_rows(c(2:549)))|> janitor::clean_names()
 
-mr_trash_wheel
+
+Problem 2
+```{r mr_trash_wheel creation, filtered irrelevant rows, updated homes_powered column}
+mr_trash_wheel = read_excel("./data/202309 Trash Wheel Collection Data.xlsx", sheet = 1, cell_rows(c(2:549)))|>
+  janitor::clean_names() |>
+  mutate(homes_powered = (weight_tons*500)/30)
+
+view(mr_trash_wheel)
+
 ```
 
-```{r mr_trash_wheel homes powered creation}
-homes_powered_df = 
-  tibble(
-    dumpster_num = 1:547
-    homes_powered = select(mr_trash_wheel
-  ))
+```{r prof_trash_wheel creation, filtered irrelevant rows, updated homes_powered column}
+prof_trash_wheel = read_excel("./data/202309 Trash Wheel Collection Data.xlsx", sheet = 2, cell_rows(c(2:108)))|>
+  janitor::clean_names() |>
+  mutate(homes_powered = (weight_tons*500)/30)
+
+view(prof_trash_wheel)
+```
+
+```{r gwynnda_trash_wheel creation, filtered irrelevant rows, updated homes_powered column}
+gwynnda_trash_wheel = read_excel("./data/202309 Trash Wheel Collection Data.xlsx", sheet = 4, cell_rows(c(2:157)))|>
+  janitor::clean_names() |>
+  mutate(homes_powered = (weight_tons*500)/30)
+
+view(gwynnda_trash_wheel)
 ```
 
 ```{r}
